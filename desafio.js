@@ -1,23 +1,48 @@
 /* #7DaysOfCode
 
-    Dia 2: Obtendo Informações do Usuário
+    Dia 3: Estruturas de Controle de Fluxo.
 
 */
-const nome = prompt("Qual o seu nome? ")
-const idade = prompt("Quantos anos você tem? ")
-const linguagem = prompt("Qual linguagem de programação você está estudando? ")
-const mensagem = `Olá ${nome}, você tem ${idade} e já está aprendendo ${linguagem}!`
-alert(mensagem)
-const resposta = prompt(`Você gosta de estudar ${linguagem}? Responda com o número 1 para SIM ou 2 para NÂO.`)
-document.write(`<h3>Nome: ${nome}<br>Idade: ${idade} Anos<br>Linguagem: ${linguagem}<br><br></h3>`)
-document.write(`<h3>Pergunta: Você gosta de estudar ${linguagem}?</h3>`)
+alert("Bem Vindo ao Game Developer");
+let area = prompt("Qual área da tecnologia deseja seguir: (Back-End ou Front-End)?").toLowerCase().trim()
+if(area === 'front-end'){
+    const linguagem = prompt("Qual linguagem você deseja seguir aprendendo: (React ou Vue)?")
+    const especializacao = prompt(`Agora chegou a sua vez de se especializar. Deseja se aprofundar em ${linguagem} ou seguir se desenvolvendo para se tornar Fullstack.`)
+    const mensagem = `Área: ${area[0].toUpperCase()+area.slice(1)}<br> Linguagem: ${linguagem[0].toUpperCase()+linguagem.slice(1)}<br> Especialização: ${especializacao[0].toUpperCase()+especializacao.slice(1)}`
+    document.write(mensagem)
 
-if(resposta == 1){
-    document.write(`<h3>Resposta: SIM <br></h3>`)
-    document.write("<h3>> Muito bom! Continue estudando e você terá muito sucesso.</h3>")
-}else if(resposta == 2){
-    document.write(`<h3>Resposta: NÃO<br></h3>`)
-    document.write("<h3>> Ahh que pena... Já tentou aprender outras linguagens?</h3>")
+    }
+else if(area === 'back-end'){
+    const linguagem = prompt("Qual linguagem você deseja seguir aprendendo: (C# ou Java)?")
+    const especializacao = prompt(`Agora chegou a sua vez de se especializar. Deseja se aprofundar em ${linguagem[0].toUpperCase()+linguagem.slice(1)} ou seguir se desenvolvendo para se tornar Fullstack.`)
+    const mensagem = `Área: ${area[0].toUpperCase()+area.slice(1)}<br> Linguagem: ${linguagem[0].toUpperCase()+linguagem.slice(1)}<br> Especialização: ${especializacao[0].toUpperCase()+especializacao.slice(1)}`
+    document.write(mensagem)
+    
+}
+else{
+    alert("Entre com uma Área de Tecnologia Válida.")
+}    
+    
+let pergunta = prompt("Tem mais alguma tecnologia que você gostarai de aprender? (Responda 1 para SIM ou 2 para NÃO.)")
+if(pergunta == 1){
+    let contador = prompt("Quantas tecnologias deseja aprender? Ex: 5")
+    const lista_de_linguagens=[]
+    while(contador !=0){
+        const outra_linguagem = prompt("Quais linguagens gostaria de conhecer? ")
+        lista_de_linguagens.push(outra_linguagem[0].toUpperCase()+outra_linguagem.slice(1))
+        contador-=1
+    }
+    document.write(`<p>Outras_Linguagens: ${lista_de_linguagens}</p>`)
+}else if(pergunta == 2){
+    alert("Obrigado por participar ;)")
 }else{
-    document.write(`<h3>> Você digitou ${resposta}. Por Favor, Digite apenas 1 ou 2.</h3>`)
+    alert("Digite 1 ou 2")
+    let contador = prompt("Quantas tecnologias ainda deseja aprender? Ex: 5")
+    const lista_de_linguagens=[]
+    while(contador !=0){
+        const outra_linguagem = prompt("Quais linguagens gostaria de conhecer? ")
+        lista_de_linguagens.push(outra_linguagem[0].toUpperCase()+outra_linguagem.slice(1))
+        contador-=1
+    }
+    document.write(`<p>Outras_Linguagens: ${lista_de_linguagens}</p>`)
 }
