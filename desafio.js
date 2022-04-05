@@ -1,48 +1,44 @@
 /* #7DaysOfCode
 
-    Dia 3: Estruturas de Controle de Fluxo.
+    Dia 4: Mais Loops e Randomização.
 
 */
-alert("Bem Vindo ao Game Developer");
-let area = prompt("Qual área da tecnologia deseja seguir: (Back-End ou Front-End)?").toLowerCase().trim()
-if(area === 'front-end'){
-    const linguagem = prompt("Qual linguagem você deseja seguir aprendendo: (React ou Vue)?")
-    const especializacao = prompt(`Agora chegou a sua vez de se especializar. Deseja se aprofundar em ${linguagem} ou seguir se desenvolvendo para se tornar Fullstack.`)
-    const mensagem = `Área: ${area[0].toUpperCase()+area.slice(1)}<br> Linguagem: ${linguagem[0].toUpperCase()+linguagem.slice(1)}<br> Especialização: ${especializacao[0].toUpperCase()+especializacao.slice(1)}`
-    document.write(mensagem)
+const min=0
+const max=10
+const sorte_aleatoria = Math.floor(Math.random() * (max - min + 1) + min)
 
+const sorte_fixa = 7
+let tentativa = 3
+let chute = 0
+let contador = 0
+let log_resposta = [];
+alert("Bem Vindo ao Game Adivinha Número");
+
+while(chute != sorte_aleatoria){
+    chute=prompt("Chute um número entre 0 e 10:")
+    tentativa = tentativa -1
+    contador = contador + 1
+    if(chute == sorte_aleatoria){
+        alert(`Parabéns, Você acertou! O número sorteado era ${sorte_aleatoria} e você ainda tinha ${tentativa} tentativas`)
+        log_resposta.push(chute)
+        const mensagem = `Número Sorteado:${sorte_aleatoria}<br>Último Número Escolhido:${chute}<br>Tentativas: ${contador}<br>Respostas:${log_resposta}`
+        document.write(mensagem)
+        break
+    }else{
+        if(chute > sorte_aleatoria){
+            alert("Você errou!! Dica: É um número menor")
+            log_resposta.push(chute)
+        }else{
+            alert("Você errou!! Dica: É um número maior")
+            log_resposta.push(chute)
+        }
+        alert(`Você ainda tem ${tentativa} tentativas`)
     }
-else if(area === 'back-end'){
-    const linguagem = prompt("Qual linguagem você deseja seguir aprendendo: (C# ou Java)?")
-    const especializacao = prompt(`Agora chegou a sua vez de se especializar. Deseja se aprofundar em ${linguagem[0].toUpperCase()+linguagem.slice(1)} ou seguir se desenvolvendo para se tornar Fullstack.`)
-    const mensagem = `Área: ${area[0].toUpperCase()+area.slice(1)}<br> Linguagem: ${linguagem[0].toUpperCase()+linguagem.slice(1)}<br> Especialização: ${especializacao[0].toUpperCase()+especializacao.slice(1)}`
-    document.write(mensagem)
-    
+    if(tentativa == 0){
+        alert(`Suas tentativas acabaram, você perdeu!! O número era ${sorte_aleatoria}`)
+        const mensagem = `Número Sorteado:${sorte_aleatoria}<br>Último Número Escolhido:${chute}<br>Tentativas: ${contador}<br>Respostas:${log_resposta}`
+        document.write(mensagem)
+        break
+    }
 }
-else{
-    alert("Entre com uma Área de Tecnologia Válida.")
-}    
-    
-let pergunta = prompt("Tem mais alguma tecnologia que você gostarai de aprender? (Responda 1 para SIM ou 2 para NÃO.)")
-if(pergunta == 1){
-    let contador = prompt("Quantas tecnologias deseja aprender? Ex: 5")
-    const lista_de_linguagens=[]
-    while(contador !=0){
-        const outra_linguagem = prompt("Quais linguagens gostaria de conhecer? ")
-        lista_de_linguagens.push(outra_linguagem[0].toUpperCase()+outra_linguagem.slice(1))
-        contador-=1
-    }
-    document.write(`<p>Outras_Linguagens: ${lista_de_linguagens}</p>`)
-}else if(pergunta == 2){
-    alert("Obrigado por participar ;)")
-}else{
-    alert("Digite 1 ou 2")
-    let contador = prompt("Quantas tecnologias ainda deseja aprender? Ex: 5")
-    const lista_de_linguagens=[]
-    while(contador !=0){
-        const outra_linguagem = prompt("Quais linguagens gostaria de conhecer? ")
-        lista_de_linguagens.push(outra_linguagem[0].toUpperCase()+outra_linguagem.slice(1))
-        contador-=1
-    }
-    document.write(`<p>Outras_Linguagens: ${lista_de_linguagens}</p>`)
-}
+alert("Fim de Jogo")
