@@ -1,44 +1,39 @@
 /* #7DaysOfCode
 
-    Dia 4: Mais Loops e Randomização.
+    Dia 5: Arrays e Coleções.
 
 */
-const min=0
-const max=10
-const sorte_aleatoria = Math.floor(Math.random() * (max - min + 1) + min)
-
-const sorte_fixa = 7
-let tentativa = 3
-let chute = 0
-let contador = 0
-let log_resposta = [];
-alert("Bem Vindo ao Game Adivinha Número");
-
-while(chute != sorte_aleatoria){
-    chute=prompt("Chute um número entre 0 e 10:")
-    tentativa = tentativa -1
-    contador = contador + 1
-    if(chute == sorte_aleatoria){
-        alert(`Parabéns, Você acertou! O número sorteado era ${sorte_aleatoria} e você ainda tinha ${tentativa} tentativas`)
-        log_resposta.push(chute)
-        const mensagem = `Número Sorteado:${sorte_aleatoria}<br>Último Número Escolhido:${chute}<br>Tentativas: ${contador}<br>Respostas:${log_resposta}`
-        document.write(mensagem)
-        break
+alert("Minha lista de Compras para o SuperMercado")
+let secoes = [
+    `\nBebidas`,
+    `\nAcougue`, 
+    `\nCereais`, 
+    `\nEnlatados`, 
+    `\nFrios`, 
+    `\nLaticinios`, 
+    `\nMaterial de Limpeza`, 
+    `\nHigience Pessoal`, 
+    `\nPeixaria`, 
+    `\nHortifruti (frutas, legumes e verduras)`, 
+    `\nPadaria`
+]
+let verdadeiro = true
+let supermercado = new Object()
+while(verdadeiro == true){
+    let pergunta = prompt("Deseja comprar alguma coisa no supermercado? Responda SIM ou NÃO.").toLowerCase().trim()
+    if(pergunta == 'sim'){
+        let produto = prompt("O que deseja comprar?")
+        let categoria = prompt(`Entre essas sessoes do mercado\n ${secoes}\n onde fica${produto}?`)
+        supermercado[categoria] = produto
+        console.log(supermercado)
+        
+    }else if(pergunta == 'não'){
+        alert("Lista de comprar terminada.")
+        verdadeiro=false
+                
     }else{
-        if(chute > sorte_aleatoria){
-            alert("Você errou!! Dica: É um número menor")
-            log_resposta.push(chute)
-        }else{
-            alert("Você errou!! Dica: É um número maior")
-            log_resposta.push(chute)
-        }
-        alert(`Você ainda tem ${tentativa} tentativas`)
+        alert("Entre com um valor válido")
     }
-    if(tentativa == 0){
-        alert(`Suas tentativas acabaram, você perdeu!! O número era ${sorte_aleatoria}`)
-        const mensagem = `Número Sorteado:${sorte_aleatoria}<br>Último Número Escolhido:${chute}<br>Tentativas: ${contador}<br>Respostas:${log_resposta}`
-        document.write(mensagem)
-        break
-    }
-}
-alert("Fim de Jogo")
+        
+}document.write(`Sua lista de Compras:<br> `+JSON.stringify(supermercado))
+
