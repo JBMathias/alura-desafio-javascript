@@ -1,80 +1,60 @@
 /* #7DaysOfCode
 
-    Dia 6: Arrays e Coleções - Remoção de itens em Arrays.
+    Dia 7: Funções em Javascript - Criando uma Calculadora.
 
 */
-alert("Minha lista de Compras para o SuperMercado")
-let frutas = []
-let laticinios = []
-let doces = []
-let congelados = []
-let outros = []
-let secoes = [
-    `\nFrutas`,
-    `\nLaticinios`, 
-    `\nDoces`, 
-    `\nCongelados`,
-    `\nOutros`
-]
-let verdadeiro = true
+alert("Bem Vindo a Calculadora Básica v1.0")
 
-while(verdadeiro == true){
-    let pergunta = prompt("Deseja comprar alguma coisa no supermercado? Responda SIM ou NÃO.").toLowerCase().trim()
-    if(pergunta == 'sim'){
-        let produto = prompt("O que deseja comprar?")
-        let categoria = prompt(`Entre essas seções do mercado\n ${secoes}\n onde fica ${produto}?`)
-        if(categoria.toLowerCase().trim() === "frutas"){
-            frutas.push(produto)
-        }else if(categoria.toLowerCase().trim() === "laticinios"){
-            laticinios.push(produto)
-        }else if(categoria.toLowerCase().trim() === "congelados"){
-            congelados.push(produto)
-        }else if(categoria.toLowerCase().trim() === "doces"){
-            doces.push(produto)
-        }else if(categoria.toLowerCase().trim() === "outros"){
-            outros.push(produto)
-        }else{
-            alert("Seção não encontrada!!")
-        }
-        
-        
-    }else if(pergunta == 'não'){
-        alert("Lista de compras terminada.")
-        verdadeiro=false
-                
-    }else{
-        alert("Entre com um valor válido: Respota válida é SIM ou NÃO")
-    }
-        
-}document.write(`Sua lista de Compras:<br>Frutas:${frutas}<br>Laticinios:${laticinios}<br>Doces:${doces}<br>Congelados:${congelados}<br>Outros:${outros}<br><br>`)
-
+function multiplicacao(numero1, numero2){
+    return numero1 * numero2
+}
+function divisao(numero1, numero2){
+    return numero1/numero2
+}
+function subitracao( numero1, numero2){
+    return numero1 - numero2
+}
+function adicao(numero1, numero2){
+    return numero1 + numero2
+}
 
 verdadeiro = true
-while(verdadeiro == true){
-    pergunta_2 = prompt("Deseja remover algum item da lista? Digite SIM ou NÃO.").toLowerCase().trim()
-        if(pergunta_2 === 'sim'){
-            exclui_item = prompt("Qual produto deseja remover da lista?")
-            obtem_lista = prompt(`De qual seção é ${exclui_item} em:\n ${secoes}`)
-            if(obtem_lista === 'frutas'){
-                frutas.splice(frutas.indexOf(exclui_item),1)
-            }else if(obtem_lista === "laticinios"){
-                laticinios.splice(laticinios.indexOf(exclui_item),1)
-            }else if(obtem_lista === "congelados"){
-                congelados.splice(congelados.indexOf(exclui_item),1)
-            }else if(obtem_lista === "doces"){
-                doces.splice(doces.indexOf(exclui_item),1)
-            }else if(obtem_lista ==="outros"){
-                outros.splice(outros.indexOf(exclui_item),1)
-            }else{
-                alert("Item a ser removido não encontrado. Verifique a lista!")
-            }
-        }else if(pergunta_2 === "não"){
-            alert("Sessão Encerrada!")
-            verdadeiro = false
-            
-        }else{
-            alert("Entre com um valor válido: Respota válida é SIM ou NÃO")
+while(verdadeiro){
+    numero1 = Math.floor(prompt("Digite um número: "))
+    opcao = prompt("Qual operação deseja realizar com a calculadora:\n (1) Soma\n (2) Subtração\n (3) Multiplicação\n (4) Divisão\n (5) Sair da Calculadora")
+    if(opcao == 1){
+        numero2 = Math.floor(prompt("Outro número: "))
+        var soma = adicao(numero1, numero2)
+        alert(`A Soma de: ${numero1.toLocaleString('pl-PL')} + ${numero2.toLocaleString('pl-PL')} = ${soma.toLocaleString('pl-PL')}`)
+    }
+    else if(opcao == 2){
+        Math.floor(numero2 = prompt("Outro número: "))
+        var sub = subitracao(numero1, numero2)
+        alert(`A Subtração de: ${numero1.toLocaleString('pl-PL')} - ${numero2.toLocaleString('pl-PL')} = ${sub.toLocaleString('pl-PL')}`)
+    }
+    else if(opcao == 3){
+        Math.floor(numero2 = prompt("Outro número: "))
+        var multi = multiplicacao(numero1,numero2)
+        alert(`A Multiplicação de: ${numero1.toLocaleString('pl-PL')} * ${numero2.toLocaleString('pl-PL')} = ${multi.toLocaleString('pl-PL')}`)
+    }
+    else if(opcao == 4){
+        Math.floor(numero2 = prompt("Outro número: "))
+        if(numero2 == 0){
+            alert("Zero Division Error!")
+            verdadeiro=false
         }
+        else{
+            var div = divisao(numero1,numero2)
+            alert(`A Divisão de: ${numero1.toLocaleString('pl-PL')} / ${numero2.toLocaleString('pl-PL')} = ${div.toLocaleString('pl-PL')}`)
 
+        }
         
-}document.write(`Sua lista de Compras:<br>Frutas:${frutas}<br>Laticinios:${laticinios}<br>Doces:${doces}<br>Congelados:${congelados}<br>Outros:${outros}`)
+    }
+    else if(opcao == 5){
+        alert("Até a próxima!")
+        verdadeiro=false
+    }
+    else{
+        alert("Digite uma operação válida!")
+    }
+}
